@@ -1,0 +1,25 @@
+{
+  "meta": {
+    "title": "Langit Learning - Fun Learning for Kids!",
+    "lang": "en"
+  },
+  "header": {
+    "logo": "Langit",
+    "menu": {
+      "games": "Games ▼",
+      "about": "About",
+      "contact": "Contact"
+    }
+  },
+  "hero": {
+    "title": "Welcome to Langit Learning! 🌈",
+    "subtitle": "Where learning feels like play! Discover magical worlds full of fun adventures that help you grow smarter every day!",
+    "cta": "Click to start playing! 💰"
+  },
+  "games": {
+    "counting_money": "Counting Money Game"
+  },
+  "footer": {
+    "copyright": "© 2023 Langit Learning - Making Learning Magical!"
+  }
+}

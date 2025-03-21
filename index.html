@@ -1,33 +1,40 @@
 <!DOCTYPE html>
-<html lang="id">
+<html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Segera Hadir</title>
-    <style>
-        body {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-            margin: 0;
-            font-family: Arial, sans-serif;
-            background-color: #f0f0f0;
-        }
-        img {
-            max-width: 100%;
-            height: auto;
-        }
-        h1 {
-            margin-top: 20px;
-            font-size: 2em;
-            color: #333;
-        }
-    </style>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langit Learning - Home</title>
+  <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
-    <img src="langitlearning-logo.png" alt="Coming Soon Image">
-    <h1>Segera Hadir</h1>
+  <header>
+    <div class="logo">
+      <a href="index.html"><img src="./assets/images/langitlearning-logo.png" alt="Langit Learning Logo"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Games</a>
+          <ul class="dropdown-content">
+            <li><a href="./games/countmoney/countmoney.html">Counting Money</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+    <section class="intro">
+      <h1>Welcome to Langit Learning!</h1>
+      <p>Hi there! 🎉 Langit Learning is your fun hub for playing and learning. Dive into our games and have a blast while discovering new things!</p>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Langit Learning. All rights reserved.</p>
+  </footer>
 </body>
 </html>

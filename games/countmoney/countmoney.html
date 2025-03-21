@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Langit Learning - Home</title>
+  <link rel="stylesheet" href="../../css/main.css">
+  <link rel="stylesheet" href="countmoney.css">
+</head>
+<body>
+  <header>
+    <div class="logo">
+      <a href="../../index.html"><img src="../../assets/images/langitlearning-logo.png" alt="Langit Learning Logo"></a>
+    </div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li class="dropdown">
+          <a href="#">Games</a>
+          <ul class="dropdown-content">
+            <li><a href="./games/countmoney/countmoney.html">Counting Money</a></li>
+          </ul>
+        </li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="contact.html">Contact</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main>
+        <div class="game-container">
+        <div class="drop-zone" id="dropZone1"></div>
+        
+        <div class="operator-box" id="operatorBox">
+            +
+            <div class="operator-options" id="operatorOptions">
+                <button onclick="selectOperator('+')">+</button>
+                <button onclick="selectOperator('-')">-</button>
+                <button onclick="selectOperator('*')">×</button>
+            </div>
+        </div>
+        
+        <div class="drop-zone" id="dropZone2"></div>
+    </div>
+
+    <div class="currency-pallet" id="currencyPallet">
+        <!-- Currency images from Wikimedia Commons -->
+        <img src="https://upload.wikimedia.org/wikipedia/commons/d/da/1cent.svg" class="currency-item" draggable="true" data-value="0.01">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/0/0e/5cents.svg" class="currency-item" draggable="true" data-value="0.05">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/8/8d/10cents.svg" class="currency-item" draggable="true" data-value="0.10">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/39/25cents.svg" class="currency-item" draggable="true" data-value="0.25">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/5/5f/1dollar.svg" class="currency-item" draggable="true" data-value="1.00">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/3c/5dollars.svg" class="currency-item" draggable="true" data-value="5.00">
+        <img src="https://upload.wikimedia.org/wikipedia/commons/3/38/10dollars.svg" class="currency-item" draggable="true" data-value="10.00">
+    </div>
+
+    <div id="result"></div>
+
+    <script>
+        let selectedOperator = '+';
+        let currentValues = { 1: null, 2: null };
+
+        // Drag and Drop functionality
+        document.querySelectorAll('.currency-item').forEach(item => {
+            item.addEventListener('dragstart', handleDragStart);
+        });
+
+        document.querySelectorAll('.drop-zone').forEach(zone => {
+            zone.addEventListener('dragover', handleDragOver);
+            zone.addEventListener('drop', handleDrop);
+            zone.addEventListener('dragenter', handleDragEnter);
+            zone.addEventListener('dragleave', handleDragLeave);
+        });
+
+        // Operator selection
+        document.getElementById('operatorBox').addEventListener('click', () => {
+            document.getElementById('operatorOptions').style.display = 'flex';
+        });
+
+        function handleDragStart(e) {
+            const value = e.target.dataset.value;
+            e.dataTransfer.setData('text/plain', JSON.stringify({
+                src: e.target.src,
+                value: parseFloat(value)
+            }));
+        }
+
+        function handleDragOver(e) {
+            e.preventDefault();
+        }
+
+        function handleDragEnter(e) {
+            e.target.style.borderColor = '#2ecc71';
+        }
+
+        function handleDragLeave(e) {
+            e.target.style.borderColor = '#666';
+        }
+
+        function handleDrop(e) {
+            e.preventDefault();
+            const zoneId = e.target.id.replace('dropZone', '');
+            const data = JSON.parse(e.dataTransfer.getData('text/plain'));
+            
+            // Clear previous content
+            e.target.innerHTML = '';
+            e.target.style.borderColor = '#666';
+            
+            // Create new image
+            const img = new Image();
+            img.src = data.src;
+            img.style.width = '80px';
+            e.target.appendChild(img);
+            
+            // Store value
+            currentValues[zoneId] = data.value;
+            calculateResult();
+        }
+
+        function selectOperator(operator) {
+            selectedOperator = operator;
+            document.getElementById('operatorBox').innerHTML = operator;
+            document.getElementById('operatorOptions').style.display = 'none';
+            calculateResult();
+        }
+
+        function calculateResult() {
+            const [val1, val2] = [currentValues[1], currentValues[2]];
+            if (!val1 || !val2) return;
+
+            let result;
+            switch(selectedOperator) {
+                case '+': result = val1 + val2; break;
+                case '-': result = val1 - val2; break;
+                case '*': result = val1 * val2; break;
+            }
+            
+            document.getElementById('result').textContent = 
+                `$${val1.toFixed(2)} ${selectedOperator} $${val2.toFixed(2)} = $${result.toFixed(2)}`;
+        }
+    </script>
+  </main>
+
+  <footer>
+    <p>&copy; 2025 Langit Learning. All rights reserved.</p>
+  </footer>
+</body>
+</html>
