@@ -1,56 +1,94 @@
+.game-container {
+    flex-direction: column;
+    gap: 30px;
+    margin-left: 150px;
+    padding-bottom: 30px;
+}
 
-        .game-container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            gap: 20px;
-            margin: 50px;
-        }
+.vertical-drop-zones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //gap: 30px;
+}
 
-        .drop-zone {
-            width: 200px;
-            height: 200px;
-            border: 3px dashed #666;
-            border-radius: 10px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
+.drop-zone {
+      width: 80%;
+      height: 250px; /* Increased height */
+      background-color: #b3e5fc;
+      border: 4px solid #039be5;
+      border-radius: 20px; /* Rounded edges */
+      display: grid;
+      grid-template-columns: repeat(2, 1fr); /* 2 columns */
+      grid-auto-rows: 100px; /* Row height */
+      gap: 15px; /* Space between items */
+      padding: 15px;
+      overflow-y: auto; /* Scroll if too many items */
+    }
+    .drop-zone img {
+      width: 100% !important;
+      height: 100% !important;
+      object-fit: contain; /* Keep aspect ratio */
+      padding: 8px;
+      transition: all 0.3s ease;
+      //background: white;
+      //border-radius: 10px;
+      //box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+    }
+    .drop-zone img.dragging {
+    opacity: 0.5;
+}
 
-        .operator-box {
-            width: 60px;
-            height: 60px;
-            border: 2px solid #333;
-            border-radius: 5px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 24px;
-        }
+.operator-box {
+    width: 100px;
+    height: 100px;
+    font-size: 50px;
+    background-color: #fff59d;
+    border: 4px solid #fdd835;
+    z-index: 1;
+}
 
-        .currency-pallet {
-            display: flex;
-            gap: 10px;
-            justify-content: center;
-            margin-top: 50px;
-        }
+.currency-pallet {
+    background: #e1f5fe;
+    border-radius: 20px;
+    padding: 15px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+}
 
-        .currency-item {
-            width: 80px;
-            height: 80px;
-            cursor: grab;
-        }
+.currency-item {
+      width: 175px; /* Slightly larger in pallet */
+      height: 175px;
+      margin: 10px;
+      transition: all 0.3s ease;
+    }
 
-        .operator-options {
-            position: absolute;
-            background: white;
-            border: 1px solid #ccc;
-            padding: 10px;
-            display: none;
-        }
+.currency-item:hover {
+    transform: scale(1.1);
+}
 
-        .selected {
-            background-color: #e0f0ff;
-        }
-    
+.operator-buttons {
+    display: flex;
+    gap: 15px;
+    margin: 20px 0;
+}
+
+.operator-btn {
+    width: 50px;
+    height: 50px;
+    font-size: 24px;
+    border: 3px solid #fdd835;
+    background-color: #fff59d;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
+
+.operator-btn.selected {
+    background-color: #fdd835;
+    border-color: #ffab00;
+    transform: scale(1.1);
+}
+
+.operator-btn:not(.selected) {
+    opacity: 0.5;
+}
