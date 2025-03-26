@@ -1,19 +1,34 @@
-.game-container {
-    flex-direction: column;
+.main-content {
+    display: flex;
+    flex-direction: row; /* Explicit row layout */
     gap: 30px;
-    margin-left: 150px;
-    padding-bottom: 30px;
+    padding: 20px;
+    height: calc(100vh - 150px); /* Adjust based on your header/footer */
 }
 
-.vertical-drop-zones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    //gap: 30px;
+.game-title {
+    font-family: 'PrintBold', sans-serif;
+    font-size: 3rem;
+    text-align: center;
+    color: #2c3e50;
+    margin: 20px 0 40px;
+    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+    padding-bottom: 10px;
+    border-bottom: 3px solid #039be5;
+    width: 80%;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+
+.main-table {
+    width: 100% !important;
+    border-collapse: collapse;
+    table-layout: fixed;
 }
 
 .drop-zone {
-      width: 80%;
+      width: 90%;
       height: 250px; /* Increased height */
       background-color: #b3e5fc;
       border: 4px solid #039be5;
@@ -24,7 +39,7 @@
       gap: 15px; /* Space between items */
       padding: 15px;
       overflow-y: auto; /* Scroll if too many items */
-    }
+}
     .drop-zone img {
       width: 100% !important;
       height: 100% !important;
@@ -48,11 +63,30 @@
     z-index: 1;
 }
 
+.currency-pallet-container {
+    width: 20%;
+}
+
+
 .currency-pallet {
+    height: 700px;
+    width: 120px; /* Narrow width */
+    overflow-y: auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
     background: #e1f5fe;
     border-radius: 20px;
-    padding: 15px;
-    box-shadow: 0 4px 8px rgba(0,0,0,0.1);
+    flex-shrink: 0; /* Prevent shrinking */
+    position: sticky;
+    left: 0;
+}
+
+.currency-pallet img {
+    width: 120px !important;
+    height: 120px !important;
+    margin: -1px 0;
 }
 
 .currency-item {
@@ -64,6 +98,20 @@
 
 .currency-item:hover {
     transform: scale(1.1);
+}
+
+.game-container {
+    flex: 1; /* Take remaining space */
+    display: flex;
+    flex-direction: column;
+    min-width: 500px; /* Minimum width for game area */
+}
+
+.vertical-drop-zones {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    //gap: 30px;
 }
 
 .operator-buttons {

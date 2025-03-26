@@ -29,36 +29,50 @@
   </header>
 
   <main>
+      <h1 class="game-title">Menghitung Uang</h1>
+      <table class="main-table">
+    <tr>
+      <!-- Currency Pallet Column -->
+      <td class="currency-pallet-container">
+            <div class="currency-pallet" id="currencyPallet">
+        <img src="./assets/currency/rp2000.svg" class="currency-item" draggable="true"
+             data-value="2000" ondragstart="dragStart(event)">
+        <img src="./assets/currency/rp5000.svg" class="currency-item" draggable="true"
+             data-value="5000" ondragstart="dragStart(event)">
+        <img src="./assets/currency/rp10000.svg" class="currency-item" draggable="true"
+             data-value="10000" ondragstart="dragStart(event)">
+        <img src="./assets/currency/rp20000.svg" class="currency-item" draggable="true"
+             data-value="20000" ondragstart="dragStart(event)">
+        <img src="./assets/currency/rp50000.svg" class="currency-item" draggable="true"
+             data-value="50000" ondragstart="dragStart(event)">
+        <img src="./assets/currency/rp100000.svg" class="currency-item" draggable="true"
+             data-value="100000" ondragstart="dragStart(event)">
+    </div>
+      </td>
+
+      <!-- Game Container Column -->
+      <td class="game-container-wrapper">
+
     <div class="game-container">
         <div class="vertical-drop-zones">
             <div class="drop-zone" id="dropZone1"></div>
-            
+
             <div class="operator-buttons">
                 <button class="operator-btn" onclick="selectOperator('+')">+</button>
                 <button class="operator-btn" onclick="selectOperator('-')">-</button>
                 <button class="operator-btn" onclick="selectOperator('×')">×</button>
             </div>
-            
+
             <div class="drop-zone" id="dropZone2"></div>
         </div>
     </div>
+      </td>
+    </tr>
+  </table>
 
-    <div class="currency-pallet" id="currencyPallet">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="0.01" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="0.05" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="0.10" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="0.25" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="1.00" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="5.00" ondragstart="dragStart(event)">
-        <img src="https://www.svgrepo.com/download/501811/money.svg" class="currency-item" draggable="true" 
-             data-value="10.00" ondragstart="dragStart(event)">
-    </div>
+
+
+
 
     <div id="result"></div>
 
