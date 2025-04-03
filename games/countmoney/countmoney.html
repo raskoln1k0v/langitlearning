@@ -1,196 +1,288 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Langit Learning - Counting Money</title>
-  <link rel="stylesheet" href="../../css/main.css">
-  <link rel="stylesheet" href="countmoney.css">
+  <!DOCTYPE html>
+  <html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Langit Learning - Counting Money</title>
+    <link rel="stylesheet" href="../../css/main.css">
+    <link rel="stylesheet" href="countmoney.css">
 
-</head>
-<body>
-  <header>
-    <div class="logo">
-      <a href="../../index.html"><img src="../../assets/images/langitlearning-logo.png" alt="Langit Learning Logo"></a>
-    </div>
-    <nav>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li class="dropdown">
-          <a href="#">Games</a>
-          <ul class="dropdown-content">
-            <li><a href="./games/countmoney/countmoney.html">Counting Money</a></li>
-          </ul>
-        </li>
-        <li><a href="about.html">About</a></li>
-        <li><a href="contact.html">Contact</a></li>
-      </ul>
-    </nav>
-  </header>
+  </head>
+  <body>
+    <header>
+      <div class="logo">
+        <a href="../../index.html"><img src="../../assets/images/langitlearning-logo.png" alt="Langit Learning Logo"></a>
+      </div>
+      <nav>
+        <ul>
+          <li><a href="index.html">Home</a></li>
+          <li class="dropdown">
+            <a href="#">Games</a>
+            <ul class="dropdown-content">
+              <li><a href="./games/countmoney/countmoney.html">Counting Money</a></li>
+            </ul>
+          </li>
+          <li><a href="about.html">About</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </nav>
+    </header>
 
-  <main>
-      <h1 class="game-title">Menghitung Uang</h1>
-      <table class="main-table">
-    <tr>
-      <!-- Currency Pallet Column -->
-      <td class="currency-pallet-container">
-            <div class="currency-pallet" id="currencyPallet">
-        <img src="./assets/currency/rp2000.svg" class="currency-item" draggable="true"
-             data-value="2000" ondragstart="dragStart(event)">
-        <img src="./assets/currency/rp5000.svg" class="currency-item" draggable="true"
-             data-value="5000" ondragstart="dragStart(event)">
-        <img src="./assets/currency/rp10000.svg" class="currency-item" draggable="true"
-             data-value="10000" ondragstart="dragStart(event)">
-        <img src="./assets/currency/rp20000.svg" class="currency-item" draggable="true"
-             data-value="20000" ondragstart="dragStart(event)">
-        <img src="./assets/currency/rp50000.svg" class="currency-item" draggable="true"
-             data-value="50000" ondragstart="dragStart(event)">
-        <img src="./assets/currency/rp100000.svg" class="currency-item" draggable="true"
-             data-value="100000" ondragstart="dragStart(event)">
-    </div>
-      </td>
+    <main>
+        <h1 class="game-title">Menghitung Uang</h1>
+        <table class="main-table">
+      <tr>
+        <!-- Currency Pallet Column -->
+        <td class="currency-pallet-container">
+              <div class="currency-pallet" id="currencyPallet">
+          <img src="./assets/currency/rp2000.svg" class="currency-item" draggable="true"
+              data-value="2000" ondragstart="dragStart(event)">
+          <img src="./assets/currency/rp5000.svg" class="currency-item" draggable="true"
+              data-value="5000" ondragstart="dragStart(event)">
+          <img src="./assets/currency/rp10000.svg" class="currency-item" draggable="true"
+              data-value="10000" ondragstart="dragStart(event)">
+          <img src="./assets/currency/rp20000.svg" class="currency-item" draggable="true"
+              data-value="20000" ondragstart="dragStart(event)">
+          <img src="./assets/currency/rp50000.svg" class="currency-item" draggable="true"
+              data-value="50000" ondragstart="dragStart(event)">
+          <img src="./assets/currency/rp100000.svg" class="currency-item" draggable="true"
+              data-value="100000" ondragstart="dragStart(event)">
+      </div>
+        </td>
 
-      <!-- Game Container Column -->
-      <td class="game-container-wrapper">
+        <!-- Game Container Column -->
+        <td class="game-container-wrapper">
 
-    <div class="game-container">
-        <div class="vertical-drop-zones">
-            <div class="drop-zone" id="dropZone1"></div>
+      <div class="game-container">
+          <div class="vertical-drop-zones">
+              <div class="drop-zone" id="dropZone1"></div>
 
-            <div class="operator-buttons">
-                <button class="operator-btn" onclick="selectOperator('+')">+</button>
-                <button class="operator-btn" onclick="selectOperator('-')">-</button>
-                <button class="operator-btn" onclick="selectOperator('×')">×</button>
-            </div>
+              <div class="operator-buttons">
+                  <button class="operator-btn" onclick="selectOperator('+')">+</button>
+                  <button class="operator-btn" onclick="selectOperator('-')">-</button>
+                  <button class="operator-btn" onclick="selectOperator('×')">×</button>
+              </div>
 
-            <div class="drop-zone" id="dropZone2"></div>
-        </div>
-    </div>
-      </td>
-    </tr>
-  </table>
-
-
+              <div class="drop-zone" id="dropZone2"></div>
+          </div>
+      </div>
+        </td>
+      </tr>
+    </table>
 
 
 
-    <div id="result"></div>
 
-    <script>
-        let currentValues = { 1: [], 2: [] };
-        let selectedOperator = '+';
 
-        function selectOperator(operator) {
-            selectedOperator = operator;
-            document.querySelectorAll('.operator-btn').forEach(btn => {
-                btn.classList.toggle('selected', btn.textContent === operator);
-            });
-            calculateResult();
+      <div id="result"></div>
+
+      <script>
+          let currentValues = { 1: [], 2: [] };
+          let selectedOperator = '+';
+
+          function selectOperator(operator) {
+              selectedOperator = operator;
+              document.querySelectorAll('.operator-btn').forEach(btn => {
+                  btn.classList.toggle('selected', btn.textContent === operator);
+              });
+              calculateResult();
+          }
+
+          function dragStart(e) {
+      const data = {
+          src: e.target.src,
+          value: parseFloat(e.target.dataset.value),
+          isMove: false // Explicitly mark as not a move
+      };
+      e.dataTransfer.setData('text/plain', JSON.stringify(data));
+      e.target.classList.add('dragging'); // Optional visual feedback
+  }
+
+  document.querySelectorAll('.currency-item').forEach(item => {
+      item.addEventListener('dragend', () => item.classList.remove('dragging'));
+  });
+
+          function handleDrop(e) {
+          e.preventDefault();
+          const dataText = e.dataTransfer.getData('text/plain');
+          if (!dataText) return;
+          const data = JSON.parse(dataText);
+          const targetZoneId = e.target.id.replace('dropZone', '');
+
+          if (data.isMove) {
+              // Move item between zones
+              const originalZone = document.getElementById(`dropZone${data.originalZoneId}`);
+              originalZone.removeChild(data.element);
+              currentValues[data.originalZoneId] = currentValues[data.originalZoneId].filter(val => val !== data.value);
+              e.target.appendChild(data.element);
+              currentValues[targetZoneId].push(data.value);
+              calculateResult();
+          } else {
+              // Add new item from pallet
+              if (currentValues[targetZoneId].length >= 6) return;
+
+              const img = new Image();
+              img.src = data.src;
+              img.dataset.value = data.value; // Store value
+              img.style.cursor = 'pointer';
+              img.title = "Click to remove";
+              img.onclick = () => removeCurrency(img, targetZoneId);
+              img.draggable = true; // Enable dragging from drop zone
+
+              // Dragstart handler for moving
+              img.addEventListener('dragstart', function(e) {
+                  const originalZoneId = this.closest('.drop-zone').id.replace('dropZone', '');
+                  const moveData = {
+                      isMove: true,
+                      originalZoneId: originalZoneId,
+                      value: parseFloat(this.dataset.value),
+                      element: this
+                  };
+                  e.dataTransfer.setData('text/plain', JSON.stringify(moveData));
+              });
+
+              // Dragend handler for deletion
+              img.addEventListener('dragend', function(e) {
+                  if (e.dataTransfer.dropEffect === 'none') {
+                      const originalZoneId = this.closest('.drop-zone')?.id.replace('dropZone', '');
+                      if (originalZoneId) removeCurrency(this, originalZoneId);
+                  }
+              });
+              img.addEventListener('touchstart', touchStart);
+              img.addEventListener('touchend', touchEnd);
+              img.addEventListener('touchmove', touchMove);
+
+              e.target.appendChild(img);
+              currentValues[targetZoneId].push(data.value);
+              calculateResult();
+          }
+      }
+
+          function removeCurrency(imgElement, zoneId) {
+              const zone = document.getElementById(`dropZone${zoneId}`);
+              const index = Array.from(zone.children).indexOf(imgElement);
+              currentValues[zoneId].splice(index, 1);
+              zone.removeChild(imgElement);
+              calculateResult();
+          }
+
+          function calculateResult() {
+              const sum1 = currentValues[1].reduce((a, b) => a + b, 0);
+              const sum2 = currentValues[2].reduce((a, b) => a + b, 0);
+
+              let result;
+              switch(selectedOperator) {
+                  case '+': result = sum1 + sum2; break;
+                  case '-': result = sum1 - sum2; break;
+                  case '×': result = sum1 * sum2; break;
+              }
+
+              document.getElementById('result').textContent =
+                  `$${sum1.toFixed(2)} ${selectedOperator} $${sum2.toFixed(2)} = $${result.toFixed(2)}`;
+          }
+
+          // Initialize event listeners for drop zones
+          document.querySelectorAll('.drop-zone').forEach(zone => {
+              zone.ondragover = e => e.preventDefault();
+              zone.ondrop = handleDrop;
+          });
+
+          // Set initial operator selection
+          document.querySelector('.operator-btn').classList.add('selected');
+      </script>
+      <script>
+  // Add these global variables
+  let touchDraggedElement = null;
+  let touchStartX = 0;
+  let touchStartY = 0;
+
+  // Modify currency item initialization
+  document.querySelectorAll('.currency-item').forEach(item => {
+    item.addEventListener('touchstart', touchStart);
+    item.addEventListener('touchend', touchEnd);
+    item.addEventListener('touchmove', touchMove);
+  });
+
+  // Add these touch handlers
+  function touchStart(e) {
+    e.preventDefault();
+    const touch = e.touches[0];
+    touchDraggedElement = e.target;
+    touchStartX = touch.clientX;
+    touchStartY = touch.clientY;
+
+    // Create a clone for visual feedback
+    const clone = touchDraggedElement.cloneNode(true);
+    clone.style.position = 'fixed';
+    clone.style.width = '120px';
+    clone.style.height = '120px';
+    clone.style.pointerEvents = 'none';
+    clone.style.zIndex = '1000';
+    clone.id = 'touch-drag-clone';
+    document.body.appendChild(clone);
+    moveClone(touch);
+  }
+
+  function touchMove(e) {
+    e.preventDefault();
+    if (!touchDraggedElement) return;
+    moveClone(e.touches[0]);
+  }
+
+  function touchEnd(e) {
+    if (!touchDraggedElement) return;
+
+    // Get final position
+    const finalX = e.changedTouches[0].clientX;
+    const finalY = e.changedTouches[0].clientY;
+
+    // Find drop zone
+    const elem = document.elementFromPoint(finalX, finalY);
+    const dropZone = elem?.closest('.drop-zone');
+
+    if (dropZone) {
+      // Simulate drop event
+      const fakeEvent = {
+        target: dropZone,
+        dataTransfer: {
+          getData: () => JSON.stringify({
+            src: touchDraggedElement.src,
+            value: parseFloat(touchDraggedElement.dataset.value),
+            isMove: false
+          })
         }
-
-        function dragStart(e) {
-    const data = {
-        src: e.target.src,
-        value: parseFloat(e.target.dataset.value),
-        isMove: false // Explicitly mark as not a move
-    };
-    e.dataTransfer.setData('text/plain', JSON.stringify(data));
-    e.target.classList.add('dragging'); // Optional visual feedback
-}
-
-document.querySelectorAll('.currency-item').forEach(item => {
-    item.addEventListener('dragend', () => item.classList.remove('dragging'));
-});
-
-        function handleDrop(e) {
-        e.preventDefault();
-        const dataText = e.dataTransfer.getData('text/plain');
-        if (!dataText) return;
-        const data = JSON.parse(dataText);
-        const targetZoneId = e.target.id.replace('dropZone', '');
-
-        if (data.isMove) {
-            // Move item between zones
-            const originalZone = document.getElementById(`dropZone${data.originalZoneId}`);
-            originalZone.removeChild(data.element);
-            currentValues[data.originalZoneId] = currentValues[data.originalZoneId].filter(val => val !== data.value);
-            e.target.appendChild(data.element);
-            currentValues[targetZoneId].push(data.value);
-            calculateResult();
-        } else {
-            // Add new item from pallet
-            if (currentValues[targetZoneId].length >= 6) return;
-
-            const img = new Image();
-            img.src = data.src;
-            img.dataset.value = data.value; // Store value
-            img.style.cursor = 'pointer';
-            img.title = "Click to remove";
-            img.onclick = () => removeCurrency(img, targetZoneId);
-            img.draggable = true; // Enable dragging from drop zone
-
-            // Dragstart handler for moving
-            img.addEventListener('dragstart', function(e) {
-                const originalZoneId = this.closest('.drop-zone').id.replace('dropZone', '');
-                const moveData = {
-                    isMove: true,
-                    originalZoneId: originalZoneId,
-                    value: parseFloat(this.dataset.value),
-                    element: this
-                };
-                e.dataTransfer.setData('text/plain', JSON.stringify(moveData));
-            });
-
-            // Dragend handler for deletion
-            img.addEventListener('dragend', function(e) {
-                if (e.dataTransfer.dropEffect === 'none') {
-                    const originalZoneId = this.closest('.drop-zone')?.id.replace('dropZone', '');
-                    if (originalZoneId) removeCurrency(this, originalZoneId);
-                }
-            });
-
-            e.target.appendChild(img);
-            currentValues[targetZoneId].push(data.value);
-            calculateResult();
-        }
+      };
+      handleDrop(fakeEvent);
     }
 
-        function removeCurrency(imgElement, zoneId) {
-            const zone = document.getElementById(`dropZone${zoneId}`);
-            const index = Array.from(zone.children).indexOf(imgElement);
-            currentValues[zoneId].splice(index, 1);
-            zone.removeChild(imgElement);
-            calculateResult();
-        }
+    // Cleanup
+    document.getElementById('touch-drag-clone')?.remove();
+    touchDraggedElement = null;
+  }
 
-        function calculateResult() {
-            const sum1 = currentValues[1].reduce((a, b) => a + b, 0);
-            const sum2 = currentValues[2].reduce((a, b) => a + b, 0);
-            
-            let result;
-            switch(selectedOperator) {
-                case '+': result = sum1 + sum2; break;
-                case '-': result = sum1 - sum2; break;
-                case '×': result = sum1 * sum2; break;
-            }
-            
-            document.getElementById('result').textContent = 
-                `$${sum1.toFixed(2)} ${selectedOperator} $${sum2.toFixed(2)} = $${result.toFixed(2)}`;
-        }
+  function moveClone(touch) {
+    const clone = document.getElementById('touch-drag-clone');
+    if (clone) {
+      clone.style.left = `${touch.clientX - 60}px`;
+      clone.style.top = `${touch.clientY - 60}px`;
+    }
+  }
 
-        // Initialize event listeners for drop zones
-        document.querySelectorAll('.drop-zone').forEach(zone => {
-            zone.ondragover = e => e.preventDefault();
-            zone.ondrop = handleDrop;
-        });
+  // Update existing removeCurrency function to handle touch
+  function removeCurrency(imgElement, zoneId) {
+    const zone = document.getElementById(`dropZone${zoneId}`);
+    const index = Array.from(zone.children).indexOf(imgElement);
+    currentValues[zoneId].splice(index, 1);
+    zone.removeChild(imgElement);
+    calculateResult();
+    // Add touch removal
+    imgElement.parentNode?.removeChild(imgElement);
+  }
+</script>
+    </main>
 
-        // Set initial operator selection
-        document.querySelector('.operator-btn').classList.add('selected');
-    </script>
-  </main>
-
-  <footer>
-    <p>&copy; 2025 Langit Learning. All rights reserved.</p>
-  </footer>
-</body>
-</html>
+    <footer>
+      <p>&copy; 2025 Langit Learning. All rights reserved.</p>
+    </footer>
+  </body>
+  </html>

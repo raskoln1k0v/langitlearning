@@ -1,142 +1,149 @@
-.main-content {
-    display: flex;
-    flex-direction: row; /* Explicit row layout */
-    gap: 30px;
-    padding: 20px;
-    height: calc(100vh - 150px); /* Adjust based on your header/footer */
-}
-
-.game-title {
-    font-family: 'PrintBold', sans-serif;
-    font-size: 3rem;
-    text-align: center;
-    color: #2c3e50;
-    margin: 20px 0 40px;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
-    padding-bottom: 10px;
-    border-bottom: 3px solid #039be5;
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-}
-
-
-.main-table {
-    width: 100% !important;
-    border-collapse: collapse;
-    table-layout: fixed;
-}
-
-.drop-zone {
-      width: 90%;
-      height: 250px; /* Increased height */
-      background-color: #b3e5fc;
-      border: 4px solid #039be5;
-      border-radius: 20px; /* Rounded edges */
-      display: grid;
-      grid-template-columns: repeat(2, 1fr); /* 2 columns */
-      grid-auto-rows: 100px; /* Row height */
-      gap: 15px; /* Space between items */
-      padding: 15px;
-      overflow-y: auto; /* Scroll if too many items */
-}
-    .drop-zone img {
-      width: 100% !important;
-      height: 100% !important;
-      object-fit: contain; /* Keep aspect ratio */
-      padding: 8px;
-      transition: all 0.3s ease;
-      //background: white;
-      //border-radius: 10px;
-      //box-shadow: 0 2px 4px rgba(0,0,0,0.1);
-    }
-    .drop-zone img.dragging {
-    opacity: 0.5;
-}
-
-.operator-box {
-    width: 100px;
-    height: 100px;
-    font-size: 50px;
-    background-color: #fff59d;
-    border: 4px solid #fdd835;
-    z-index: 1;
-}
-
-.currency-pallet-container {
-    width: 20%;
-}
-
-
-.currency-pallet {
-    height: 700px;
-    width: 120px; /* Narrow width */
-    overflow-y: auto;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    padding: 10px;
-    background: #e1f5fe;
-    border-radius: 20px;
-    flex-shrink: 0; /* Prevent shrinking */
-    position: sticky;
-    left: 0;
-}
-
-.currency-pallet img {
-    width: 120px !important;
-    height: 120px !important;
-    margin: -1px 0;
-}
-
-.currency-item {
-      width: 175px; /* Slightly larger in pallet */
-      height: 175px;
-      margin: 10px;
-      transition: all 0.3s ease;
+    .main-content {
+        display: flex;
+        flex-direction: row; /* Explicit row layout */
+        gap: 30px;
+        padding: 20px;
+        height: calc(100vh - 150px); /* Adjust based on your header/footer */
     }
 
-.currency-item:hover {
-    transform: scale(1.1);
-}
+    .game-title {
+        font-family: 'PrintBold', sans-serif;
+        font-size: 3rem;
+        text-align: center;
+        color: #2c3e50;
+        margin: 20px 0 40px;
+        text-shadow: 2px 2px 4px rgba(0,0,0,0.1);
+        padding-bottom: 10px;
+        border-bottom: 3px solid #039be5;
+        width: 80%;
+        margin-left: auto;
+        margin-right: auto;
+    }
 
-.game-container {
-    flex: 1; /* Take remaining space */
-    display: flex;
-    flex-direction: column;
-    min-width: 500px; /* Minimum width for game area */
-}
 
-.vertical-drop-zones {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    //gap: 30px;
-}
+    .main-table {
+        width: 100% !important;
+        border-collapse: collapse;
+        table-layout: fixed;
+    }
 
-.operator-buttons {
-    display: flex;
-    gap: 15px;
-    margin: 20px 0;
-}
+    .drop-zone {
+        width: 90%;
+        height: 250px; /* Increased height */
+        background-color: #b3e5fc;
+        border: 4px solid #039be5;
+        border-radius: 20px; /* Rounded edges */
+        display: grid;
+        grid-template-columns: repeat(2, 1fr); /* 2 columns */
+        grid-auto-rows: 100px; /* Row height */
+        gap: 15px; /* Space between items */
+        padding: 15px;
+        overflow-y: auto; /* Scroll if too many items */
+        touch-action: none;
+    }
+        .drop-zone img {
+        width: 100% !important;
+        height: 100% !important;
+        object-fit: contain; /* Keep aspect ratio */
+        padding: 8px;
+        transition: all 0.3s ease;
+        //background: white;
+        //border-radius: 10px;
+        //box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+        }
+        .drop-zone img.dragging {
+        opacity: 0.5;
+    }
 
-.operator-btn {
-    width: 50px;
-    height: 50px;
-    font-size: 24px;
-    border: 3px solid #fdd835;
-    background-color: #fff59d;
-    border-radius: 10px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
+    #touch-drag-clone {
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.3));
+    transition: none; /* Disable transitions for smooth movement */
+    }
 
-.operator-btn.selected {
-    background-color: #fdd835;
-    border-color: #ffab00;
-    transform: scale(1.1);
-}
+    .operator-box {
+        width: 100px;
+        height: 100px;
+        font-size: 50px;
+        background-color: #fff59d;
+        border: 4px solid #fdd835;
+        z-index: 1;
+    }
 
-.operator-btn:not(.selected) {
-    opacity: 0.5;
-}
+    .currency-pallet-container {
+        width: 20%;
+    }
+
+
+    .currency-pallet {
+        height: 700px;
+        width: 120px; /* Narrow width */
+        overflow-y: auto;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        padding: 10px;
+        background: #e1f5fe;
+        border-radius: 20px;
+        flex-shrink: 0; /* Prevent shrinking */
+        position: sticky;
+        left: 0;
+    }
+
+    .currency-pallet img {
+        width: 120px !important;
+        height: 120px !important;
+        margin: -1px 0;
+    }
+
+    .currency-item {
+        width: 175px; /* Slightly larger in pallet */
+        height: 175px;
+        margin: 10px;
+        transition: all 0.3s ease;
+        touch-action: none;
+        }
+
+    .currency-item:hover {
+        transform: scale(1.1);
+    }
+
+    .game-container {
+        flex: 1; /* Take remaining space */
+        display: flex;
+        flex-direction: column;
+        min-width: 500px; /* Minimum width for game area */
+    }
+
+    .vertical-drop-zones {
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        //gap: 30px;
+    }
+
+    .operator-buttons {
+        display: flex;
+        gap: 15px;
+        margin: 20px 0;
+    }
+
+    .operator-btn {
+        width: 50px;
+        height: 50px;
+        font-size: 24px;
+        border: 3px solid #fdd835;
+        background-color: #fff59d;
+        border-radius: 10px;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    .operator-btn.selected {
+        background-color: #fdd835;
+        border-color: #ffab00;
+        transform: scale(1.1);
+    }
+
+    .operator-btn:not(.selected) {
+        opacity: 0.5;
+    }
